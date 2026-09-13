@@ -1,28 +1,42 @@
 import { desc, eq, ilike, or, sql } from "drizzle-orm";
+
 import db from "../models/index.js";
-import { problems } from "../models/schemas/problems.schema.js";
+import { problems, testcases } from "../models/schemas/problems.schema.js";
+
 import {
     CreateProblemDto,
     UpdateProblemDto,
     Difficulty,
 } from "../dtos/problems.dto.js";
 
-// creates a new problem
+// creates a problem and all of its testcases
 export async function createProblem(data: CreateProblemDto) {
-    const [problem] = await db
-        .insert(problems)
-        .values({
-            title: data.title,
-            description: data.description,
-            difficulty: data.difficulty ?? "easy",
-            editorial: data.editorial,
-        })
-        .returning();
+    return await db.transaction(async (tx) => {
+        // create the problem first
+        const [problem] = await tx
+            .insert(problems)
+            .values({
+                title: data.title,
+                description: data.description,
+                difficulty: data.difficulty,
+                editorial: data.editorial,
+            })
+            .returning();
 
-    return problem;
+        // attach all testcases to the new problem
+        await tx.insert(testcases).values(
+            data.testcases.map((testcase) => ({
+                problemId: problem.id,
+                input: testcase.input,
+                output: testcase.output,
+            })),
+        );
+
+        return problem;
+    });
 }
 
-// gets a problem by its id
+// gets a problem along with all of its testcases
 export async function getProblemById(id: string) {
     const [problem] = await db
         .select()
@@ -30,10 +44,23 @@ export async function getProblemById(id: string) {
         .where(eq(problems.id, id))
         .limit(1);
 
-    return problem ?? null;
+    if (!problem) {
+        return null;
+    }
+
+    // get all testcases belonging to this problem
+    const problemTestcases = await db
+        .select()
+        .from(testcases)
+        .where(eq(testcases.problemId, id));
+
+    return {
+        ...problem,
+        testcases: problemTestcases,
+    };
 }
 
-// gets all problems with the total count
+// gets all problems without testcases
 export async function getAllProblems() {
     const problemList = await db
         .select()
@@ -52,21 +79,45 @@ export async function getAllProblems() {
     };
 }
 
-// updates a problem by its id
+// updates a problem and optionally replaces its testcases
 export async function updateProblem(id: string, data: UpdateProblemDto) {
-    const [problem] = await db
-        .update(problems)
-        .set({
-            ...data,
-            updatedAt: new Date(),
-        })
-        .where(eq(problems.id, id))
-        .returning();
+    return await db.transaction(async (tx) => {
+        // separate testcases because they are stored in another table
+        const { testcases: testcaseData, ...problemData } = data;
 
-    return problem ?? null;
+        // update the problem
+        const [problem] = await tx
+            .update(problems)
+            .set({
+                ...problemData,
+                updatedAt: new Date(),
+            })
+            .where(eq(problems.id, id))
+            .returning();
+
+        // if no problem exists with the id given
+        if (!problem) {
+            return null;
+        }
+
+        // replace testcases only when they were included in the request
+        if (testcaseData) {
+            await tx.delete(testcases).where(eq(testcases.problemId, id));
+
+            await tx.insert(testcases).values(
+                testcaseData.map((testcase) => ({
+                    problemId: id,
+                    input: testcase.input,
+                    output: testcase.output,
+                })),
+            );
+        }
+
+        return problem;
+    });
 }
 
-// deletes a problem by its id
+// deletes a problem and its testcases
 export async function deleteProblem(id: string) {
     const deleted = await db
         .delete(problems)
