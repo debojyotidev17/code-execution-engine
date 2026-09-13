@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "@types/sanitize-html": "^2.16.1",
-    "@types/turndown": "^5.0.6"
-  }
-}
