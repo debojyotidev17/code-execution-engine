@@ -10,7 +10,7 @@ import logger from "../config/logger.config.js";
 export const validateRequestBody = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            logger.info("Validating req body")
+            logger.info("Validating req body");
             await schema.parseAsync(req.body);
             logger.info("Request body is valid");
             next();
@@ -19,6 +19,21 @@ export const validateRequestBody = (schema: z.ZodType) => {
             logger.error("Request body is invalid");
             return res.json({
                 message: "Invalid request body",
+                success: false,
+                error: error,
+            });
+        }
+    };
+};
+
+export const validateRequestParams = (schema: z.ZodType) => {
+    return async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            await schema.parseAsync(req.params);
+            next();
+        } catch (error) {
+            res.status(400).json({
+                message: "Invalid request params",
                 success: false,
                 error: error,
             });
