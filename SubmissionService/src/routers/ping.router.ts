@@ -1,6 +1,6 @@
 import express from "express";
 import { pingHandler } from "../controllers/ping.controller.js";
-import { pingSchema } from "../validators/ping.validator.js";
+import { pingSchema } from "../validators/submission.validator.js";
 import { validateRequestBody } from "../validators/index.js";
 
 const pingRouter = express.Router();

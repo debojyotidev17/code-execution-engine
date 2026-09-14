@@ -20,9 +20,7 @@ export const submissions = pgTable("submissions", {
     id: uuid("id").defaultRandom().primaryKey(),
 
     problemId: uuid("problem_id").notNull(),
-
     code: text("code").notNull(),
-
     language: submissionLanguageEnum("language").notNull(),
 
     status: submissionStatusEnum("status").notNull().default("pending"),
@@ -32,13 +30,13 @@ export const submissions = pgTable("submissions", {
     /**
     * we might store something like:
 
-    *{
+    *   {
     *    "passedTestCases": 10,
     *    "totalTestCases": 10,
     *    "executionTime": 123,
     *    "memoryUsed": 2048
-    }
-     */
+    *   }
+    */
 
     createdAt: timestamp("created_at", {
         withTimezone: true,
