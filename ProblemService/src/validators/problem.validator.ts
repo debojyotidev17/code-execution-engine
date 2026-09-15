@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const testcaseSchema = z.object({
+const testcaseSchema = z.object({
     input: z.string().trim().min(1, "input is required"),
     output: z.string().trim().min(1, "output is required"),
 });
@@ -25,12 +25,15 @@ export const createProblemSchema = z.object({
         .trim()
         .min(1, "title is required")
         .max(100, "title must be less than 100 characters"),
-
     description: z.string().trim().min(1, "description is required"),
 
     difficulty: z.enum(["easy", "medium", "hard"]).default("easy"),
+    // means if the client doesn't provide difficulty, Zod will use easy
+    // .default("easy") already makes the field optional from the input's perspective.
 
     editorial: z.string().trim().optional(),
+    // .optional()  → may be absent → can result in undefined
+    // undefined will be stored in DB as null automatically
 
     testcases: z
         .array(testcaseSchema)
@@ -64,4 +67,8 @@ export const findByDifficultySchema = z.object({
 
 export const searchProblemSchema = z.object({
     query: z.string().trim().min(1, "search query is required"),
+});
+
+export const problemIdSchema = z.object({
+    id: z.uuid("invalid problem id"),
 });

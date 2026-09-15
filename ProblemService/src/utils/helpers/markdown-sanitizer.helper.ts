@@ -1,15 +1,12 @@
-import { marked } from "marked";
 import logger from "../../config/logger.config.js";
 import sanitizeHtml from "sanitize-html";
 import TurndownService from "turndown";
 
+import { marked } from "marked";
+import { InternalServerError } from "../errors/app.error.js";
+
 // converts markdown to safe markdown by removing unsafe html
 export async function sanitizeMarkdown(markdown: string) {
-    // return empty string if markdown is missing or invalid
-    if (!markdown || typeof markdown !== "string") {
-        return "";
-    }
-
     try {
         // convert markdown into html so it can be sanitized
         const convertedHtml = await marked.parse(markdown);
@@ -50,8 +47,8 @@ export async function sanitizeMarkdown(markdown: string) {
 
         return tds.turndown(sanitizedHtml);
     } catch (error) {
-        // log the error and return an empty string if sanitization fails
-        logger.error("Error sanitizing markdown", error);
-        return "";
+        // log the error and throw an error if sanitization fails
+        logger.error("Error sanitizing markdown");
+        throw new InternalServerError("Sanitization problem");
     }
 }

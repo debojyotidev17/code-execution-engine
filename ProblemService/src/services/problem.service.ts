@@ -1,4 +1,8 @@
-import { CreateProblemDto, UpdateProblemDto } from "../dtos/problem.dto.js";
+import {
+    CreateProblemDto,
+    Difficulty,
+    UpdateProblemDto,
+} from "../dtos/problem.dto.js";
 
 import {
     createProblem,
@@ -10,17 +14,14 @@ import {
     searchProblems,
 } from "../repositories/problem.repository.js";
 
-import { BadRequestError, NotFoundError } from "../utils/errors/app.error.js";
-
+import { NotFoundError } from "../utils/errors/app.error.js";
 import { sanitizeMarkdown } from "../utils/helpers/markdown-sanitizer.helper.js";
 
 // creates a problem after sanitizing markdown
 export async function createProblemService(problem: CreateProblemDto) {
     const sanitizedPayload = {
         ...problem,
-
         description: await sanitizeMarkdown(problem.description),
-
         editorial: problem.editorial
             ? await sanitizeMarkdown(problem.editorial)
             : undefined,
@@ -95,17 +96,11 @@ export async function deleteProblemService(id: string) {
 }
 
 // finds problems by difficulty
-export async function findByDifficultyService(
-    difficulty: "easy" | "medium" | "hard",
-) {
+export async function findByDifficultyService(difficulty: Difficulty) {
     return await findByDifficulty(difficulty);
 }
 
 // searches problems
 export async function searchProblemsService(query: string) {
-    if (!query || query.trim() === "") {
-        throw new BadRequestError("Query is required");
-    }
-
     return await searchProblems(query);
 }

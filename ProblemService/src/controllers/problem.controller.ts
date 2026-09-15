@@ -8,11 +8,11 @@ import {
     findByDifficultyService,
     searchProblemsService,
 } from "../services/problem.service.js";
-import { Difficulty } from "../dtos/problem.dto.js";
+import { CreateProblemDto, Difficulty, UpdateProblemDto } from "../dtos/problem.dto.js";
 
 // creates a new problem
 export async function createProblem(req: Request, res: Response) {
-    const problem = await createProblemService(req.body);
+    const problem = await createProblemService(req.body as CreateProblemDto);
 
     res.status(201).json({
         message: "Problem created successfully",
@@ -47,7 +47,7 @@ export async function getAllProblems(req: Request, res: Response) {
 export async function updateProblem(req: Request, res: Response) {
     const problem = await updateProblemService(
         req.params.id as string,
-        req.body,
+        req.body as UpdateProblemDto,
     );
 
     res.status(200).json({

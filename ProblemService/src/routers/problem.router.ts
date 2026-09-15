@@ -1,9 +1,11 @@
 import express from "express";
+
 import {
     createProblemSchema,
     updateProblemSchema,
     findByDifficultySchema,
     searchProblemSchema,
+    problemIdSchema,
 } from "../validators/problem.validator.js";
 import {
     validateRequestBody,
@@ -22,13 +24,20 @@ import {
 
 const problemRouter = express.Router();
 
-problemRouter.get("/", getAllProblems);
+problemRouter.get("/", getAllProblems); 
+
+// API -> GET /problems/search?query=two
 problemRouter.get(
     "/search",
     validateQueryParams(searchProblemSchema),
     searchProblems,
 );
-problemRouter.get("/:id", getProblemById);
+
+problemRouter.get(
+    "/:id",
+    validateRequestParams(problemIdSchema),
+    getProblemById,
+);  
 
 problemRouter.get(
     "/difficulty/:difficulty",
@@ -42,12 +51,13 @@ problemRouter.post(
     createProblem,
 );
 
-problemRouter.put(
+problemRouter.put( 
     "/:id",
     validateRequestBody(updateProblemSchema),
+    validateRequestParams(problemIdSchema),
     updateProblem,
 );
 
-problemRouter.delete("/:id", deleteProblem);
+problemRouter.delete("/:id", deleteProblem); 
 
 export default problemRouter;

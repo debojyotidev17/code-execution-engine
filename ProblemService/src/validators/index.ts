@@ -1,10 +1,11 @@
-import { NextFunction, Request, Response } from "express";
-import { z } from "zod";
 import logger from "../config/logger.config.js";
 
+import { NextFunction, Request, Response } from "express";
+import { z } from "zod";
+
 /**
- * @params schema = zod schema to validate the req body
- * @returns = middleware function to validate the req body
+ * @params schema = zod schema to validate
+ * @returns = middleware function to validate
  */
 
 export const validateRequestBody = (schema: z.ZodType) => {
@@ -29,9 +30,11 @@ export const validateRequestBody = (schema: z.ZodType) => {
 export const validateRequestParams = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
+            logger.info("Validating req params");
             await schema.parseAsync(req.params);
             next();
         } catch (error) {
+            logger.error("Request params is invalid");
             res.status(400).json({
                 message: "Invalid request params",
                 success: false,
@@ -44,10 +47,11 @@ export const validateRequestParams = (schema: z.ZodType) => {
 export const validateQueryParams = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
+            logger.info("Validating query params");
             await schema.parseAsync(req.query);
-
             next();
         } catch (error) {
+            logger.error("Query params is invalid");
             res.status(400).json({
                 message: "Invalid query params",
                 success: false,

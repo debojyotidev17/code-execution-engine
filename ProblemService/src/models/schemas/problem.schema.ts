@@ -7,25 +7,19 @@ import {
     varchar,
 } from "drizzle-orm/pg-core";
 
-export const difficultyEnum = pgEnum("difficulty", ["easy", "medium", "hard"]);
+export const difficultyEnum = pgEnum("difficulty", ["easy", "medium", "hard"]); // "difficulty" is the name of the PostgreSQL enum type
 
 export const problems = pgTable("problems", {
-    id: uuid("id").defaultRandom().primaryKey(), 
-
-    title: varchar("title", { length: 100 }).notNull(),
-
-    description: text("description").notNull(),
-
-    difficulty: difficultyEnum("difficulty").notNull().default("easy"),
-
-    editorial: text("editorial"),
-
+    id: uuid().defaultRandom().primaryKey(), 
+    title: varchar({ length: 100 }).notNull(),
+    description: text().notNull(),
+    difficulty: difficultyEnum().notNull().default("easy"),
+    editorial: text(),
     createdAt: timestamp("created_at", {
         withTimezone: true,
     })
         .notNull()
         .defaultNow(),
-
     updatedAt: timestamp("updated_at", {
         withTimezone: true,
     })
@@ -34,7 +28,7 @@ export const problems = pgTable("problems", {
 });
 
 export const testcases = pgTable("testcases", {
-    id: uuid("id").defaultRandom().primaryKey(),
+    id: uuid().defaultRandom().primaryKey(),
 
     problemId: uuid("problem_id")
         .notNull()
@@ -42,12 +36,11 @@ export const testcases = pgTable("testcases", {
             onDelete: "cascade",
         }),
 
-    input: text("input").notNull(),
-
-    output: text("output").notNull(),
+    input: text().notNull(),
+    output: text().notNull(),
 });
 
-/** 
+/*
 *                   PostgreSQL
 
 ┌───────────────────────────────────────────┐
@@ -75,4 +68,4 @@ export const testcases = pgTable("testcases", {
 │ input       TEXT NOT NULL                 │
 │ output      TEXT NOT NULL                 │
 └───────────────────────────────────────────┘
- */
+*/

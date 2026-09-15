@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
 import { serverConfig } from "./src/config/index.js";
 

@@ -1,13 +1,10 @@
-import { Queue } from "bullmq";
-import redis from "../config/redis.config.js";
-import { CreateSubmissionDTO } from "../dtos/submission.dto.js";
+import type { CreateSubmissionDTO } from "../dtos/submission.dto.js";
+import logger from "../config/logger.config.js";
 
-// queue name for submissions
-export const SUBMISSION_QUEUE  = "submission";
-
-const submissionQueue = new Queue(SUBMISSION_QUEUE, {
-    connection: redis,
-});
+import {
+    submissionQueue,
+    SUBMISSION_QUEUE,
+} from "../queues/submission.queue.js";
 
 type SubmissionJobData = {
     submissionId: string;
@@ -16,6 +13,13 @@ type SubmissionJobData = {
     language: CreateSubmissionDTO["language"];
 };
 
+// add a submission job to the queue
 export async function addSubmissionJob(data: SubmissionJobData) {
-    await submissionQueue.add(SUBMISSION_QUEUE, data);
+    try {
+        const job = await submissionQueue.add(SUBMISSION_QUEUE, data);
+        logger.info(`Submission job added successfully: ${job.id}`);
+    } catch (error) {
+        logger.error(`Failed to add submission job: ${error}`);
+        throw error;
+    }
 }
