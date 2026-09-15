@@ -19,6 +19,8 @@ import { sanitizeMarkdown } from "../utils/helpers/markdown-sanitizer.helper.js"
 
 // creates a problem after sanitizing markdown
 export async function createProblemService(problem: CreateProblemDto) {
+
+    // copy everything from problem, replace its description with the sanitized description and editorial
     const sanitizedPayload = {
         ...problem,
         description: await sanitizeMarkdown(problem.description),
