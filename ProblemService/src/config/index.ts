@@ -8,16 +8,16 @@ type ServerConfig = {
 dotenv.config();
 
 /*
-* So after dotenv.config():
-*
-* PORT=3001
-* DATABASE_URL=...
-* 
-* becomes accessible as:
-* 
-* process.env.PORT
-* process.env.DATABASE_URL
-*/
+ * So after dotenv.config():
+ *
+ * PORT=3001
+ * DATABASE_URL=...
+ * 
+ * becomes accessible as:
+ * 
+ * process.env.PORT
+ * process.env.DATABASE_URL
+ */
 
 export const serverConfig: ServerConfig = {
     PORT: Number(process.env.PORT!),

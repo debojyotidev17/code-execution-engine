@@ -3,9 +3,9 @@ services:
   postgres:
     image: postgres:18
     ports:
-      - "5433:5432"
+      - "5434:5432"
     environment:
-      POSTGRES_DB: leetcode
+      POSTGRES_DB: submissionsDB
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
 

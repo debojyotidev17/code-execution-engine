@@ -4,6 +4,7 @@ import {
     createSubmissionSchema,
     submissionIdSchema,
     updateSubmissionStatusSchema,
+    problemIdSchema,
 } from "../validators/submission.validator.js";
 
 import {
@@ -36,7 +37,11 @@ submissionRouter.get(
 );
 
 // get all submissions for a problem
-submissionRouter.get("/problem/:problemId", getSubmissionsByProblemId);
+submissionRouter.get(
+    "/problem/:problemId",
+    validateRequestParams(problemIdSchema),
+    getSubmissionsByProblemId,
+);
 
 // delete a submission by its id
 submissionRouter.delete(

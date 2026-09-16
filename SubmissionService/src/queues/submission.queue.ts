@@ -1,9 +1,8 @@
+import redis from "../config/redis.config.js";
 import { Queue } from "bullmq";
 
-import redis from "../config/redis.config.js";
-
 // queue name for submissions
-export const SUBMISSION_QUEUE = "submission";
+export const SUBMISSION_QUEUE = "submissions";
 
 // create the submission queue
 export const submissionQueue = new Queue(SUBMISSION_QUEUE, {

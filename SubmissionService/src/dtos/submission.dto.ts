@@ -6,6 +6,13 @@ import {
     submissionIdSchema,
 } from "../validators/submission.validator.js";
 
+// type for data required when creating a submission
 export type CreateSubmissionDTO = z.infer<typeof createSubmissionSchema>;
-export type UpdateSubmissionStatusDTO = z.infer<typeof updateSubmissionStatusSchema>;
+
+// type for data required when updating a submission's status
+export type UpdateSubmissionStatusDTO = z.infer<
+    typeof updateSubmissionStatusSchema
+>;
+
+// type for data containing a submission ID
 export type SubmissionIdDTO = z.infer<typeof submissionIdSchema>;

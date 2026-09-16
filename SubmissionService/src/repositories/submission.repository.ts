@@ -7,13 +7,18 @@ import type {
 } from "../dtos/submission.dto.js";
 import { eq } from "drizzle-orm";
 
-// create a new submission
+// creates a new submission in the database
 export async function createSubmission(data: CreateSubmissionDTO) {
     const [submission] = await db
         .insert(submissions)
         .values({
+            // id of the problem this submission belongs to
             problemId: data.problemId,
+
+            // source code submitted by the user
             code: data.code,
+
+            // programming language used for the submission
             language: data.language,
         })
         .returning();
@@ -21,7 +26,7 @@ export async function createSubmission(data: CreateSubmissionDTO) {
     return submission;
 }
 
-// get a submission by its id
+// gets a submission by its id
 export async function getSubmissionById(data: SubmissionIdDTO) {
     const [submission] = await db
         .select()
@@ -31,7 +36,7 @@ export async function getSubmissionById(data: SubmissionIdDTO) {
     return submission;
 }
 
-// get all submissions for a problem
+// gets all submissions belonging to a particular problem
 export async function getSubmissionsByProblemId(problemId: string) {
     return await db
         .select()
@@ -39,7 +44,7 @@ export async function getSubmissionsByProblemId(problemId: string) {
         .where(eq(submissions.problemId, problemId));
 }
 
-// delete a submission by its id
+// deletes a submission by its id
 export async function deleteSubmission(data: SubmissionIdDTO) {
     const [submission] = await db
         .delete(submissions)
@@ -49,7 +54,7 @@ export async function deleteSubmission(data: SubmissionIdDTO) {
     return submission;
 }
 
-// update the status of a submission by its id
+// updates the status of a submission by its id
 export async function updateSubmissionStatus(
     data: SubmissionIdDTO,
     statusData: UpdateSubmissionStatusDTO,
@@ -57,7 +62,10 @@ export async function updateSubmissionStatus(
     const [submission] = await db
         .update(submissions)
         .set({
+            // update the submission status
             status: statusData.status,
+
+            // manually update the timestamp because defaultNow() only applies when the row is inserted
             updatedAt: new Date(),
         })
         .where(eq(submissions.id, data.submissionId))

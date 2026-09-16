@@ -3,7 +3,7 @@ import DailyRotateFile from "winston-daily-rotate-file";
 
 import { getCorrelationID } from "../utils/helpers/request.helper.js";
 
-/**
+/*
  * logger levels:
  * info  -> general information about the application
  * warn  -> something unexpected but not necessarily an error

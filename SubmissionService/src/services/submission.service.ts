@@ -1,10 +1,10 @@
 import { getProblemById } from "../apis/problem.api.js";
 import {
-    createSubmission as createSubmissionRepository,
-    getSubmissionById as getSubmissionByIdRepository,
-    getSubmissionsByProblemId as getSubmissionsByProblemIdRepository,
-    deleteSubmission as deleteSubmissionRepository,
-    updateSubmissionStatus as updateSubmissionStatusRepository,
+    createSubmission,
+    getSubmissionById,
+    getSubmissionsByProblemId,
+    deleteSubmission,
+    updateSubmissionStatus,
 } from "../repositories/submission.repository.js";
 import type {
     CreateSubmissionDTO,
@@ -14,16 +14,19 @@ import type {
 import { NotFoundError } from "../utils/errors/app.error.js";
 import { addSubmissionJob } from "../producers/submission.producer.js";
 
-// create a new submission
-export async function createSubmission(data: CreateSubmissionDTO) {
+// creates a new submission
+export async function createSubmissionService(data: CreateSubmissionDTO) {
+    // check that the problem exists before creating the submission
     const problem = await getProblemById(data.problemId);
 
     if (!problem) {
         throw new NotFoundError("Problem not found");
     }
 
-    const submission = await createSubmissionRepository(data);
+    // save the submission in the Submission Service database
+    const submission = await createSubmission(data);
 
+    // add the submission to the queue so the evaluator can process it
     await addSubmissionJob({
         submissionId: submission.id,
         problemId: data.problemId,
@@ -34,9 +37,9 @@ export async function createSubmission(data: CreateSubmissionDTO) {
     return submission;
 }
 
-// get a submission by its id
-export async function getSubmissionById(data: SubmissionIdDTO) {
-    const submission = await getSubmissionByIdRepository(data);
+// gets a submission by its id
+export async function getSubmissionByIdService(data: SubmissionIdDTO) {
+    const submission = await getSubmissionById(data);
 
     if (!submission) {
         throw new NotFoundError("Submission not found");
@@ -45,14 +48,14 @@ export async function getSubmissionById(data: SubmissionIdDTO) {
     return submission;
 }
 
-// get all submissions for a problem
-export async function getSubmissionsByProblemId(problemId: string) {
-    return await getSubmissionsByProblemIdRepository(problemId);
+// gets all submissions for a particular problem
+export async function getSubmissionsByProblemIdService(problemId: string) {
+    return await getSubmissionsByProblemId(problemId);
 }
 
-// delete a submission by its id
-export async function deleteSubmission(data: SubmissionIdDTO) {
-    const submission = await deleteSubmissionRepository(data);
+// deletes a submission by its id
+export async function deleteSubmissionService(data: SubmissionIdDTO) {
+    const submission = await deleteSubmission(data);
 
     if (!submission) {
         throw new NotFoundError("Submission not found");
@@ -61,12 +64,12 @@ export async function deleteSubmission(data: SubmissionIdDTO) {
     return submission;
 }
 
-// update the status of a submission
-export async function updateSubmissionStatus(
+// updates the status of a submission
+export async function updateSubmissionStatusService(
     data: SubmissionIdDTO,
     statusData: UpdateSubmissionStatusDTO,
 ) {
-    const submission = await updateSubmissionStatusRepository(data, statusData);
+    const submission = await updateSubmissionStatus(data, statusData);
 
     if (!submission) {
         throw new NotFoundError("Submission not found");

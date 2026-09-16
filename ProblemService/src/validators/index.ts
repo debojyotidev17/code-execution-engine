@@ -4,21 +4,25 @@ import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
 /**
- * @params schema = zod schema to validate
- * @returns = middleware function to validate
+ * @param schema - Zod schema used to validate the request body
+ * @returns middleware function that validates the request body
  */
 
 export const validateRequestBody = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            logger.info("Validating req body");
+            logger.info("Validating request body");
+
             await schema.parseAsync(req.body);
+
             logger.info("Request body is valid");
+
             next();
         } catch (error) {
-            // if the validation fails
+            // if validation fails, return a bad request response
             logger.error("Request body is invalid");
-            return res.json({
+
+            return res.status(400).json({
                 message: "Invalid request body",
                 success: false,
                 error: error,
@@ -27,15 +31,26 @@ export const validateRequestBody = (schema: z.ZodType) => {
     };
 };
 
+/**
+ * @param schema - Zod schema used to validate route parameters
+ * @returns middleware function that validates route parameters
+ */
+
 export const validateRequestParams = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            logger.info("Validating req params");
+            logger.info("Validating request params");
+
             await schema.parseAsync(req.params);
+
+            logger.info("Request params are valid");
+
             next();
         } catch (error) {
-            logger.error("Request params is invalid");
-            res.status(400).json({
+            // if validation fails, return a bad request response
+            logger.error("Request params are invalid");
+
+            return res.status(400).json({
                 message: "Invalid request params",
                 success: false,
                 error: error,
@@ -44,18 +59,29 @@ export const validateRequestParams = (schema: z.ZodType) => {
     };
 };
 
+/**
+ * @param schema - Zod schema used to validate query parameters
+ * @returns middleware function that validates query parameters
+ */
+
 export const validateQueryParams = (schema: z.ZodType) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
             logger.info("Validating query params");
+
             await schema.parseAsync(req.query);
+
+            logger.info("Query params are valid");
+
             next();
         } catch (error) {
-            logger.error("Query params is invalid");
-            res.status(400).json({
+            // if validation fails, return a bad request response
+            logger.error("Query params are invalid");
+
+            return res.status(400).json({
                 message: "Invalid query params",
                 success: false,
-                error,
+                error: error,
             });
         }
     };
