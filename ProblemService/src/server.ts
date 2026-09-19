@@ -6,7 +6,6 @@ import { serverConfig } from "./config/index.js";
 import { genericErrorHandler } from "./middlewares/error.middleware.js";
 import { attachCorrelationIdMiddleware } from "./middlewares/correlation.middleware.js";
 
-
 const app = express();
 
 app.use(express.json()); 

@@ -10,11 +10,11 @@ dotenv.config();
 /*
  * So after dotenv.config():
  *
- * PORT=3001
+ * PORT=3000
  * DATABASE_URL=...
- * 
+ *
  * becomes accessible as:
- * 
+ *
  * process.env.PORT
  * process.env.DATABASE_URL
  */

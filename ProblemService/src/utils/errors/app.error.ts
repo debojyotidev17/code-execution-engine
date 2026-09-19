@@ -9,7 +9,7 @@ export class InternalServerError extends Error implements AppError {
         super(message);
 
         this.statusCode = 500;
-        this.name = "Internal Server Error";
+        this.name = "Internal Server Error"; // JS default Error constructor only requires the message not the name
     }
 }
 

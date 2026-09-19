@@ -2,6 +2,7 @@ import logger from "../config/logger.config.js";
 
 import { NextFunction, Request, Response } from "express";
 import { z } from "zod";
+import { BadRequestError } from "../utils/errors/app.error.js";
 
 /**
  * @param schema - Zod schema used to validate the request body
@@ -22,11 +23,7 @@ export const validateRequestBody = (schema: z.ZodType) => {
             // if validation fails, return a bad request response
             logger.error("Request body is invalid");
 
-            return res.status(400).json({
-                message: "Invalid request body",
-                success: false,
-                error: error,
-            });
+            throw new BadRequestError("Invalid req body");
         }
     };
 };
@@ -50,11 +47,7 @@ export const validateRequestParams = (schema: z.ZodType) => {
             // if validation fails, return a bad request response
             logger.error("Request params are invalid");
 
-            return res.status(400).json({
-                message: "Invalid request params",
-                success: false,
-                error: error,
-            });
+            throw new BadRequestError("Request params are invalid");
         }
     };
 };
@@ -78,11 +71,7 @@ export const validateQueryParams = (schema: z.ZodType) => {
             // if validation fails, return a bad request response
             logger.error("Query params are invalid");
 
-            return res.status(400).json({
-                message: "Invalid query params",
-                success: false,
-                error: error,
-            });
+            throw new BadRequestError("Query params are invalid");
         }
     };
 };

@@ -18,11 +18,11 @@ const logger = winston.createLogger({
     format: winston.format.combine(
         // adds the current date and time to every log
         winston.format.timestamp({
-            format: "MM-DD-YYYY HH:mm:ss",
+            format: "DD-MM-YYYY HH:mm:ss",
         }),
 
         // creates the final structure of the log entry
-        winston.format.printf(({ level, message, timestamp}) => {
+        winston.format.printf(({ level, message, timestamp }) => {
             const output = {
                 level,
                 message,
@@ -49,7 +49,7 @@ const logger = winston.createLogger({
             filename: "logs/%DATE%-app.log",
 
             // creates a new log file each day
-            datePattern: "YYYY-MM-DD",
+            datePattern: "DD-MM-YYYY",
 
             // keeps log files for 14 days
             maxFiles: "14d",

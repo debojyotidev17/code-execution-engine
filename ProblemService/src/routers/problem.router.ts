@@ -28,12 +28,6 @@ const problemRouter = express.Router();
 
 problemRouter.get("/", getAllProblems);
 
-// API -> GET /problems/search?query=two
-problemRouter.get(
-    "/search",
-    validateQueryParams(searchProblemSchema),
-    searchProblems,
-);
 
 problemRouter.get(
     "/:id",
@@ -41,11 +35,21 @@ problemRouter.get(
     getProblemById,
 );
 
+
+// API -> GET /problems/search?query=two
+problemRouter.get(
+    "/search",
+    validateQueryParams(searchProblemSchema),
+    searchProblems,
+);
+
+
 problemRouter.get(
     "/difficulty/:difficulty",
     validateRequestParams(findByDifficultySchema),
     findByDifficulty,
 );
+
 
 problemRouter.post(
     "/",
@@ -53,13 +57,20 @@ problemRouter.post(
     createProblem,
 );
 
-problemRouter.put(
+
+problemRouter.patch(
     "/:id",
     validateRequestParams(problemIdSchema),
     validateRequestBody(updateProblemSchema),
     updateProblem,
 );
 
-problemRouter.delete("/:id", deleteProblem);
+
+problemRouter.delete(
+    "/:id",
+    validateRequestParams(problemIdSchema),
+    deleteProblem,
+);
+
 
 export default problemRouter;

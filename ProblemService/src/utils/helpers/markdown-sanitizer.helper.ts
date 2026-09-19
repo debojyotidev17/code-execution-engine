@@ -33,9 +33,6 @@ export async function sanitizeMarkdown(markdown: string) {
                 a: ["href", "target"],
             },
 
-            // allow only safe url protocols
-            allowedSchemes: ["http", "https"],
-
             // allow http and https sources for images
             allowedSchemesByTag: {
                 img: ["http", "https"],

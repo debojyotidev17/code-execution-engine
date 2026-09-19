@@ -95,11 +95,6 @@ export async function updateProblem(id: string, data: UpdateProblemDto) {
             .where(eq(problems.id, id))
             .returning();
 
-        // if no problem exists with the id given
-        if (!problem) {
-            return null;
-        }
-
         // replace testcases only when they were included in the request
         if (testcaseData) {
             await tx.delete(testcases).where(eq(testcases.problemId, id));
