@@ -15,7 +15,7 @@ import {
 import {
     createSubmission,
     getSubmissionById,
-    getSubmissionsByProblemId,
+    getAllSubmissionsForProblemId,
     deleteSubmission,
     updateSubmissionStatus,
 } from "../controllers/submission.controller.js";
@@ -29,30 +29,30 @@ submissionRouter.post(
     createSubmission,
 );
 
-// get a submission by its id
-submissionRouter.get(
-    "/:id",
-    validateRequestParams(submissionIdSchema),
-    getSubmissionById,
-);
-
 // get all submissions for a problem
 submissionRouter.get(
     "/problem/:problemId",
     validateRequestParams(problemIdSchema),
-    getSubmissionsByProblemId,
-);
+    getAllSubmissionsForProblemId,
+); // done
+
+// get a submission by its id
+submissionRouter.get(
+    "/:submissionId",
+    validateRequestParams(submissionIdSchema),
+    getSubmissionById,
+); // done
 
 // delete a submission by its id
 submissionRouter.delete(
-    "/:id",
+    "/:submissionId",
     validateRequestParams(submissionIdSchema),
     deleteSubmission,
-);
+); // done
 
 // update the status of a submission
-submissionRouter.put(
-    "/:id/status",
+submissionRouter.patch(
+    "/:submissionId/status",
     validateRequestParams(submissionIdSchema),
     validateRequestBody(updateSubmissionStatusSchema),
     updateSubmissionStatus,

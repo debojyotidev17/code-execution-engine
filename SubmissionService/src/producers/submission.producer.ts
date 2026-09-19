@@ -6,7 +6,7 @@ import {
 } from "../queues/submission.queue.js";
 
 // data that will be sent to the submission queue
-type SubmissionJobData = {
+export type SubmissionJobData = {
     // id of the submission stored in the database
     submissionId: string;
 

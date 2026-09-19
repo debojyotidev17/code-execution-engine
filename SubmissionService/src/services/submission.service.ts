@@ -2,22 +2,26 @@ import { getProblemById } from "../apis/problem.api.js";
 import {
     createSubmission,
     getSubmissionById,
-    getSubmissionsByProblemId,
+    getAllSubmissionsForProblemId,
     deleteSubmission,
     updateSubmissionStatus,
 } from "../repositories/submission.repository.js";
 import type {
     CreateSubmissionDTO,
+    ProblemIdDTO,
     SubmissionIdDTO,
     UpdateSubmissionStatusDTO,
 } from "../dtos/submission.dto.js";
 import { NotFoundError } from "../utils/errors/app.error.js";
-import { addSubmissionJob } from "../producers/submission.producer.js";
+import {
+    addSubmissionJob,
+    SubmissionJobData,
+} from "../producers/submission.producer.js";
 
 // creates a new submission
 export async function createSubmissionService(data: CreateSubmissionDTO) {
     // check that the problem exists before creating the submission
-    const problem = await getProblemById(data.problemId);
+    const problem = await getProblemById(data.problemId as string);
 
     if (!problem) {
         throw new NotFoundError("Problem not found");
@@ -32,7 +36,7 @@ export async function createSubmissionService(data: CreateSubmissionDTO) {
         problemId: data.problemId,
         code: data.code,
         language: data.language,
-    });
+    } as SubmissionJobData);
 
     return submission;
 }
@@ -49,8 +53,8 @@ export async function getSubmissionByIdService(data: SubmissionIdDTO) {
 }
 
 // gets all submissions for a particular problem
-export async function getSubmissionsByProblemIdService(problemId: string) {
-    return await getSubmissionsByProblemId(problemId);
+export async function getAllSubmissionsForProblemIdService(data: ProblemIdDTO) {
+    return await getAllSubmissionsForProblemId(data.problemId);
 }
 
 // deletes a submission by its id

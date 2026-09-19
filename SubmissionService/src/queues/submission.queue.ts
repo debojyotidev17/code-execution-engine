@@ -1,24 +1,24 @@
 import redis from "../config/redis.config.js";
 import { Queue } from "bullmq";
 
-// queue name for submissions
-export const SUBMISSION_QUEUE = "submissions";
+// Name of the queue where submission jobs are stored.
+export const SUBMISSION_QUEUE = "submission";
 
-// create the submission queue
+// Create the BullMQ queue used to store submission jobs.
 export const submissionQueue = new Queue(SUBMISSION_QUEUE, {
     connection: redis,
 
-    // default options for every job added to this queue
+    // Default options applied to every job added to this queue.
     defaultJobOptions: {
-        // retry the job up to 3 times if it fails
+        // Retry a job up to 3 attempts if its processing fails.
         attempts: 3,
 
-        // wait before retrying a failed job
+        // Configure the delay between failed attempts.
         backoff: {
-            // increase the delay after each failed attempt
+            // Increase the retry delay after each failed attempt.
             type: "exponential",
 
-            // initial retry delay in milliseconds
+            // Start with a 2-second delay before the first retry.
             delay: 2000,
         },
     },

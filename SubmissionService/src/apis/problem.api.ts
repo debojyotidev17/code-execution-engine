@@ -14,7 +14,7 @@ export async function getProblemById(problemId: string) {
 
         // if the Problem Service returns an unsuccessful response, return null so the service layer can handle it
         if (!response.ok) {
-            logger.info(
+            logger.warn(
                 `Problem Service returned status ${response.status} for problemId: ${problemId}`,
             );
 
@@ -22,7 +22,8 @@ export async function getProblemById(problemId: string) {
         }
 
         // convert the response body from JSON into a JavaScript object
-        return await response.json();
+        const responseData = await response.json()
+        return responseData.data;
     } catch (error) {
         // handle network errors or other fetch-related errors
         logger.error(`Failed to get problem details: ${error}`);

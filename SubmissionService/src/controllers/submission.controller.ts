@@ -3,15 +3,24 @@ import type { Request, Response } from "express";
 import {
     createSubmissionService,
     getSubmissionByIdService,
-    getSubmissionsByProblemIdService,
+    getAllSubmissionsForProblemIdService,
     deleteSubmissionService,
     updateSubmissionStatusService,
 } from "../services/submission.service.js";
 
+import {
+    SubmissionIdDTO,
+    ProblemIdDTO,
+    CreateSubmissionDTO,
+    UpdateSubmissionStatusDTO,
+} from "../dtos/submission.dto.js";
+
 // creates a new submission
 export async function createSubmission(req: Request, res: Response) {
     // pass the request body to the service layer
-    const submission = await createSubmissionService(req.body);
+    const submission = await createSubmissionService(
+        req.body as CreateSubmissionDTO,
+    );
 
     // send the newly-created submission back to the client
     res.status(201).json({
@@ -24,9 +33,9 @@ export async function createSubmission(req: Request, res: Response) {
 // gets a submission by its id
 export async function getSubmissionById(req: Request, res: Response) {
     // get the submission id from the route parameter
-    const submission = await getSubmissionByIdService({
-        submissionId: req.params.id as string,
-    });
+    const submission = await getSubmissionByIdService(
+        req.params as SubmissionIdDTO,
+    );
 
     // send the submission back to the client
     res.status(200).json({
@@ -37,10 +46,13 @@ export async function getSubmissionById(req: Request, res: Response) {
 }
 
 // gets all submissions for a particular problem
-export async function getSubmissionsByProblemId(req: Request, res: Response) {
+export async function getAllSubmissionsForProblemId(
+    req: Request,
+    res: Response,
+) {
     // get the problem id from the route parameter
-    const submissions = await getSubmissionsByProblemIdService(
-        req.params.problemId as string,
+    const submissions = await getAllSubmissionsForProblemIdService(
+        req.params as ProblemIdDTO,
     );
 
     // send the submissions back to the client
@@ -54,9 +66,9 @@ export async function getSubmissionsByProblemId(req: Request, res: Response) {
 // deletes a submission by its id
 export async function deleteSubmission(req: Request, res: Response) {
     // get the submission id from the route parameter
-    const submission = await deleteSubmissionService({
-        submissionId: req.params.id as string,
-    });
+    const submission = await deleteSubmissionService(
+        req.params as SubmissionIdDTO,
+    );
 
     // send the deleted submission back to the client
     res.status(200).json({
@@ -70,10 +82,8 @@ export async function deleteSubmission(req: Request, res: Response) {
 export async function updateSubmissionStatus(req: Request, res: Response) {
     // get the submission id from the route parameter and pass the new status from the request body
     const submission = await updateSubmissionStatusService(
-        {
-            submissionId: req.params.id as string,
-        },
-        req.body,
+        req.params as SubmissionIdDTO,
+        req.body as UpdateSubmissionStatusDTO,
     );
 
     // send the updated submission back to the client

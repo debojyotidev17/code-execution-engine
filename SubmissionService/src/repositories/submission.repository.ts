@@ -37,7 +37,7 @@ export async function getSubmissionById(data: SubmissionIdDTO) {
 }
 
 // gets all submissions belonging to a particular problem
-export async function getSubmissionsByProblemId(problemId: string) {
+export async function getAllSubmissionsForProblemId(problemId: string) {
     return await db
         .select()
         .from(submissions)
