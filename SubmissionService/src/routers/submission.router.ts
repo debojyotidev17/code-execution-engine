@@ -34,21 +34,21 @@ submissionRouter.get(
     "/problem/:problemId",
     validateRequestParams(problemIdSchema),
     getAllSubmissionsForProblemId,
-); // done
+);
 
 // get a submission by its id
 submissionRouter.get(
     "/:submissionId",
     validateRequestParams(submissionIdSchema),
     getSubmissionById,
-); // done
+);
 
 // delete a submission by its id
 submissionRouter.delete(
     "/:submissionId",
     validateRequestParams(submissionIdSchema),
     deleteSubmission,
-); // done
+);
 
 // update the status of a submission
 submissionRouter.patch(
