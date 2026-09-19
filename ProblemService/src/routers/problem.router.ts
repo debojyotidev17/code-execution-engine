@@ -24,16 +24,11 @@ import {
     searchProblems,
 } from "../controllers/problem.controller.js";
 
+
 const problemRouter = express.Router();
 
+
 problemRouter.get("/", getAllProblems);
-
-
-problemRouter.get(
-    "/:id",
-    validateRequestParams(problemIdSchema),
-    getProblemById,
-);
 
 
 // API -> GET /problems/search?query=two
@@ -48,6 +43,13 @@ problemRouter.get(
     "/difficulty/:difficulty",
     validateRequestParams(findByDifficultySchema),
     findByDifficulty,
+);
+
+
+problemRouter.get(
+    "/:id",
+    validateRequestParams(problemIdSchema),
+    getProblemById,
 );
 
 
