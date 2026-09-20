@@ -9,7 +9,6 @@ import {
 
 // defines the programming languages supported by the evaluator
 export const submissionLanguageEnum = pgEnum("submission_language", [
-    "javascript",
     "python",
     "cpp",
 ]);
@@ -17,12 +16,10 @@ export const submissionLanguageEnum = pgEnum("submission_language", [
 // defines the possible states of a submission during evaluation
 export const submissionStatusEnum = pgEnum("submission_status", [
     "pending",
-    "running",
     "accepted",
     "wrong_answer",
     "time_limit_exceeded",
     "runtime_error",
-    "compilation_error",
 ]);
 
 // defines the submissions table
@@ -43,19 +40,6 @@ export const submissions = pgTable("submissions", {
     // current state of the submission
     // every new submission starts as pending
     status: submissionStatusEnum("status").notNull().default("pending"),
-
-    /*
-     * stores additional evaluation results returned by the evaluator
-     *
-     * example:
-     * {
-     *   "passedTestCases": 10,
-     *   "totalTestCases": 10,
-     *   "executionTime": 123,
-     *   "memoryUsed": 2048
-     * }
-     */
-    submissionData: jsonb("submission_data"),
 
     // stores when the submission was created
     createdAt: timestamp("created_at", {

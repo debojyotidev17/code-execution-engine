@@ -10,7 +10,7 @@ export const createSubmissionSchema = z.object({
     code: z.string().min(1),
 
     // programming language used for the submitted code
-    language: z.enum(["javascript", "python", "cpp"]),
+    language: z.enum(["python", "cpp"]),
 });
 
 // validates the submission ID received through request parameters
@@ -28,11 +28,9 @@ export const updateSubmissionStatusSchema = z.object({
     // only allow statuses supported by the submission lifecycle
     status: z.enum([
         "pending",
-        "running",
         "accepted",
         "wrong_answer",
         "time_limit_exceeded",
         "runtime_error",
-        "compilation_error",
     ]),
 });

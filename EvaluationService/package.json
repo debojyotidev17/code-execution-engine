@@ -5,9 +5,10 @@
     "license": "ISC",
     "author": "",
     "type": "module",
-    "main": "dist/server.js",
+    "main": "dist/index.js",
     "scripts": {
-        "start": "npx tsc && node --watch dist/server.js"
+        "pull-images": "docker pull python:3.8-slim  && docker pull gcc:14",
+        "start": "node dist/index.js"
     },
     "dependencies": {
         "bullmq": "^6.3.6",
@@ -26,8 +27,5 @@
         "@types/node": "^24.0.0",
         "tsx": "^4.20.0",
         "typescript": "^7.0.2"
-    },
-    "allowScripts": {
-        "esbuild@0.28.2": true
     }
 }

@@ -33,7 +33,7 @@ export async function createSubmissionService(data: CreateSubmissionDTO) {
     // add the submission to the queue so the evaluator can process it
     await addSubmissionJob({
         submissionId: submission.id,
-        problemId: data.problemId,
+        problem,
         code: data.code,
         language: data.language,
     } as SubmissionJobData);
