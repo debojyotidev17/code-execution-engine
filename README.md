@@ -24,7 +24,6 @@ The repository contains three independently deployable Express services:
 - [Data model](#data-model)
 - [Execution model](#execution-model)
 - [Error handling and observability](#error-handling-and-observability)
-- [Current limitations and hardening roadmap](#current-limitations-and-hardening-roadmap)
 
 ## Architecture
 
