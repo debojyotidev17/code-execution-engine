@@ -8,8 +8,6 @@ The repository contains three independently deployable Express services:
 - **Submission Service** — persists submissions, verifies the referenced problem, and publishes evaluation jobs.
 - **Evaluation Service** — consumes jobs, executes Python or C++ against every test case, and records the final verdict.
 
-> This README describes the implementation in this repository. It intentionally calls out current operational and security limitations rather than presenting them as production-ready behavior.
-
 ## Contents
 
 - [Architecture](#architecture)
