@@ -1,0 +1,118 @@
+{"level":"info","message":"Server is running on 3003","timestamp":"10-15-2026 08:42:51","data":{}}
+{"level":"info","message":"evalutaion workers started","timestamp":"10-15-2026 08:42:51","data":{}}
+{"level":"info","message":"Redis connected","timestamp":"10-15-2026 08:42:51","data":{}}
+{"level":"info","message":"Processing evaluation job 1","timestamp":"10-15-2026 08:42:51","data":{}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:51","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Infrastructure error during code evaluation","timestamp":"10-15-2026 08:42:51","data":{"error":{"statusCode":500,"name":"Internal Server Error"},"jobId":"1"}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:51","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:51","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:51","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:42:51","data":{"jobId":"1","error":"Code evaluation infrastructure failed"}}
+{"level":"info","message":"Processing evaluation job 1","timestamp":"10-15-2026 08:42:53","data":{}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:53","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Infrastructure error during code evaluation","timestamp":"10-15-2026 08:42:53","data":{"error":{"statusCode":500,"name":"Internal Server Error"},"jobId":"1"}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:53","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:53","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:53","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:42:53","data":{"jobId":"1","error":"Code evaluation infrastructure failed"}}
+{"level":"info","message":"Processing evaluation job 1","timestamp":"10-15-2026 08:42:57","data":{}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:57","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Infrastructure error during code evaluation","timestamp":"10-15-2026 08:42:57","data":{"error":{"statusCode":500,"name":"Internal Server Error"},"jobId":"1"}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:57","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:57","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Failed to create Docker container","timestamp":"10-15-2026 08:42:57","data":{"error":"(HTTP code 404) no such container - No such image: python:3.8-slim "}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:42:57","data":{"jobId":"1","error":"Code evaluation infrastructure failed"}}
+{"level":"info","message":"Server is running on 3003","timestamp":"10-15-2026 08:44:59","data":{}}
+{"level":"info","message":"evalutaion workers started","timestamp":"10-15-2026 08:44:59","data":{}}
+{"level":"info","message":"Redis connected","timestamp":"10-15-2026 08:44:59","data":{}}
+{"level":"info","message":"Processing evaluation job 2","timestamp":"10-15-2026 08:45:43","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:43","data":{"containerId":"0ee1935f88f4bd396ccfa7a9abcf745d8ee512706fa051fcc8123c84f7f7912b"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:43","data":{"containerId":"85a1389679cee776673e083f77998ede2b9ee940b5a33e456f90c5caf8e86225"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:43","data":{"containerId":"e4be67d02fc10376850dd3b0e8f9e2cca6845d623ee1dced68b08ac1091adde8"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:43","data":{"containerId":"3d87781e34ca04b567292ac3cb9febaf2af741d376ce445d51ff4e09139bd90d"}}
+{"level":"info","message":"Submission a20cae4a-a905-45be-b323-9ec7044ccc2c evaluated as accepted","timestamp":"10-15-2026 08:45:44","data":{"jobId":"2","submissionId":"a20cae4a-a905-45be-b323-9ec7044ccc2c","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:45:44","data":{"url":"http://localhost:3002/submissions/2/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:45:44","data":{"jobId":"accepted","submissionId":"2","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:45:44","data":{"jobId":"2","error":"Failed to update submission status"}}
+{"level":"info","message":"Processing evaluation job 2","timestamp":"10-15-2026 08:45:46","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:46","data":{"containerId":"a19fbb2e629e94c06c2fd9088b45a42188b4c15cfa0cc80905de874542650732"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:46","data":{"containerId":"06521b689a44c5299d1b5449c92f111ae37b113284d34e204a5fb28ea5957439"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:46","data":{"containerId":"9ac13b9fbcd81159883b2fb27b093acf5a5281468b98cab05ce8d5c3b1fcc91f"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:46","data":{"containerId":"b232ec3fc88a807083ad5f4eeff6861519f3a096b1b089f28f6c24b3fa3f3b0a"}}
+{"level":"info","message":"Submission a20cae4a-a905-45be-b323-9ec7044ccc2c evaluated as accepted","timestamp":"10-15-2026 08:45:46","data":{"jobId":"2","submissionId":"a20cae4a-a905-45be-b323-9ec7044ccc2c","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:45:46","data":{"url":"http://localhost:3002/submissions/2/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:45:46","data":{"jobId":"accepted","submissionId":"2","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:45:46","data":{"jobId":"2","error":"Failed to update submission status"}}
+{"level":"info","message":"Processing evaluation job 2","timestamp":"10-15-2026 08:45:50","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:50","data":{"containerId":"dae1b370672b66c967096e57d59ca2f43aa49f90247909d2ab79058a08fb6af9"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:50","data":{"containerId":"ca34410f3cf57e9372be87260e564fca64e65af0d8cec5d50fb428eccfb12e44"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:50","data":{"containerId":"60ed10762962d598e994ebac17d3c0e6490377174aa572192254635ea05b5fc8"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:45:50","data":{"containerId":"0d0a20ab8b48db12f77b726279d1b46f1d3dcf50e2a70d514ce7d89d6f77ac2b"}}
+{"level":"info","message":"Submission a20cae4a-a905-45be-b323-9ec7044ccc2c evaluated as accepted","timestamp":"10-15-2026 08:45:51","data":{"jobId":"2","submissionId":"a20cae4a-a905-45be-b323-9ec7044ccc2c","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:45:51","data":{"url":"http://localhost:3002/submissions/2/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:45:51","data":{"jobId":"accepted","submissionId":"2","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:45:51","data":{"jobId":"2","error":"Failed to update submission status"}}
+{"level":"info","message":"Processing evaluation job 3","timestamp":"10-15-2026 08:47:12","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:12","data":{"containerId":"8599381752eb3a260dd09fda9bc64850f3c044d040c0750c9dd05ac25dab1738"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:12","data":{"containerId":"1e70d2e0d0c31544cfc2c69a26127ae34f21dd04bd6ce35801cdcb4ac50c64f7"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:12","data":{"containerId":"150d20bf21865f1a5d39fad8d9c2eb3288d51c8762be9d6c41b03722a9d71161"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:12","data":{"containerId":"76e20ed4e75f22f3dc6698e4eb3ef21fadd3883b1df0fb5bf6d451e0763120c8"}}
+{"level":"info","message":"Submission 4ccca1ca-3609-4dde-aa76-85463f658e7a evaluated as accepted","timestamp":"10-15-2026 08:47:12","data":{"jobId":"3","submissionId":"4ccca1ca-3609-4dde-aa76-85463f658e7a","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:47:12","data":{"url":"http://localhost:3002/submissions/3/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:47:12","data":{"jobId":"accepted","submissionId":"3","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:47:12","data":{"jobId":"3","error":"Failed to update submission status"}}
+{"level":"info","message":"Processing evaluation job 3","timestamp":"10-15-2026 08:47:14","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:15","data":{"containerId":"f866dd72bfad0113f00683ee0f6bceba3c4f0403967913f3f60acde34d95d28c"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:15","data":{"containerId":"d851ef052c54327ae9097d08e3c84004e0ae793b7472b06dca03a94817f52f16"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:15","data":{"containerId":"6d218160202b7f79b5e306c65026b4da1c5c30ad7544af3e89656cad01153d85"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:15","data":{"containerId":"1bdd394f613b92e9b313953a9f55d00e7c08beddd85bb213e7fde2b336c53ad1"}}
+{"level":"info","message":"Submission 4ccca1ca-3609-4dde-aa76-85463f658e7a evaluated as accepted","timestamp":"10-15-2026 08:47:15","data":{"jobId":"3","submissionId":"4ccca1ca-3609-4dde-aa76-85463f658e7a","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:47:15","data":{"url":"http://localhost:3002/submissions/3/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:47:15","data":{"jobId":"accepted","submissionId":"3","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:47:15","data":{"jobId":"3","error":"Failed to update submission status"}}
+{"level":"info","message":"Processing evaluation job 3","timestamp":"10-15-2026 08:47:19","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:19","data":{"containerId":"5212635ba44f1ffff6ece9df82bb1fe30eb9384fb5f593b87e44574f33b22db1"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:19","data":{"containerId":"3dd67dd259571c5b1500605883f0a42a229b8da8d5bf89b5ed2ac197d279082a"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:19","data":{"containerId":"4c1f4b78d3c20fb9c8aa1104e6ce6cb1bc70dcd7b96a00074d2583fa48a07341"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:19","data":{"containerId":"50a326f00e79e629d18d10a7ca393d72b81d4981712de43618436fd201bec217"}}
+{"level":"info","message":"Submission 4ccca1ca-3609-4dde-aa76-85463f658e7a evaluated as accepted","timestamp":"10-15-2026 08:47:19","data":{"jobId":"3","submissionId":"4ccca1ca-3609-4dde-aa76-85463f658e7a","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:47:19","data":{"url":"http://localhost:3002/submissions/3/status"}}
+{"level":"error","message":"Failed to update submission","timestamp":"10-15-2026 08:47:19","data":{"jobId":"accepted","submissionId":"3","error":{"statusCode":500,"name":"Internal Server Error"}}}
+{"level":"error","message":"Evaluation job failed","timestamp":"10-15-2026 08:47:19","data":{"jobId":"3","error":"Failed to update submission status"}}
+{"level":"info","message":"Server is running on 3003","timestamp":"10-15-2026 08:47:40","data":{}}
+{"level":"info","message":"evalutaion workers started","timestamp":"10-15-2026 08:47:40","data":{}}
+{"level":"info","message":"Redis connected","timestamp":"10-15-2026 08:47:40","data":{}}
+{"level":"info","message":"Processing evaluation job 4","timestamp":"10-15-2026 08:47:45","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:45","data":{"containerId":"44e3e6bdfbf7f78c7aa89e7779b2724706f754ce36eb41e13e4a643c5e9d8318"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:45","data":{"containerId":"613424fcd306cd8ea703d94d13f5fab979ab8afa39642a98948506977875b8ce"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:45","data":{"containerId":"f3dbb15c4f1ce97a9a5a2fa05d43cd685b7304fdc87454608f1231963947627d"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:47:45","data":{"containerId":"ce71c9c67e947f622e91933dfdab9d2720c71b4afbf5d29cd446f00dbd240e62"}}
+{"level":"info","message":"Submission b1161916-ad1e-4079-87b2-947fe2c2de9b evaluated as accepted","timestamp":"10-15-2026 08:47:46","data":{"jobId":"4","submissionId":"b1161916-ad1e-4079-87b2-947fe2c2de9b","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:47:46","data":{"url":"http://localhost:3002/submissions/b1161916-ad1e-4079-87b2-947fe2c2de9b/status"}}
+{"level":"info","message":"Submission updated successfully","timestamp":"10-15-2026 08:47:46","data":{"jobId":"4","submissionId":"b1161916-ad1e-4079-87b2-947fe2c2de9b","data":{"message":"Submission status updated successfully","data":{"id":"b1161916-ad1e-4079-87b2-947fe2c2de9b","problemId":"3433cc87-20bb-4e97-9d1b-9ddd754dadf7","code":"n = int(input())\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")","language":"python","status":"accepted","createdAt":"2026-10-15T03:17:45.519Z","updatedAt":"2026-10-15T03:17:46.124Z"},"success":true}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"10-15-2026 08:47:46","data":{"jobId":"4"}}
+{"level":"info","message":"Processing evaluation job 5","timestamp":"10-15-2026 08:48:44","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:48:44","data":{"containerId":"eb87bcdf0a1d576ec4edc40d3926915bb8fa1df53e07bc0268ba37c0e90014ce"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:48:44","data":{"containerId":"909e2a4b602c4d70f6ce7d18b54b8dcc1a2977f22bb4b4e066ab3fa87f7f4b65"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:48:44","data":{"containerId":"82feec5e686260fcadbd2d128d49d766d57f2b96cdf2d8876b0ca93d7b1c2f2e"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:48:44","data":{"containerId":"90af56818d774a03932e8348391b69a9ab5296a52ae6685517fe4eaea679905f"}}
+{"level":"info","message":"Submission ec10889d-31fe-4222-98a9-e4e6cbfb3316 evaluated as accepted","timestamp":"10-15-2026 08:48:44","data":{"jobId":"5","submissionId":"ec10889d-31fe-4222-98a9-e4e6cbfb3316","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:48:44","data":{"url":"http://localhost:3002/submissions/ec10889d-31fe-4222-98a9-e4e6cbfb3316/status"}}
+{"level":"info","message":"Submission updated successfully","timestamp":"10-15-2026 08:48:44","data":{"jobId":"5","submissionId":"ec10889d-31fe-4222-98a9-e4e6cbfb3316","data":{"message":"Submission status updated successfully","data":{"id":"ec10889d-31fe-4222-98a9-e4e6cbfb3316","problemId":"3433cc87-20bb-4e97-9d1b-9ddd754dadf7","code":"n = int(input())\nif n % 2 == 0:\n    print(\"Even\")\nelse:\n    print(\"Odd\")","language":"python","status":"accepted","createdAt":"2026-10-15T03:18:44.135Z","updatedAt":"2026-10-15T03:18:44.554Z"},"success":true}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"10-15-2026 08:48:44","data":{"jobId":"5"}}
+{"level":"info","message":"Processing evaluation job 6","timestamp":"10-15-2026 08:50:10","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:50:11","data":{"containerId":"dc2b26b7745495b32fb8aab16b169b4d7790f550430071402704b132fbfbf030"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:50:11","data":{"containerId":"2b3554630cbf664ec01373de8abe44542b6f425ef8e520abf7cab595cedeeee2"}}
+{"level":"info","message":"Submission 8860eaae-5c89-4802-ac41-171a3bdbe9cf evaluated as accepted","timestamp":"10-15-2026 08:50:11","data":{"jobId":"6","submissionId":"8860eaae-5c89-4802-ac41-171a3bdbe9cf","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:50:11","data":{"url":"http://localhost:3002/submissions/8860eaae-5c89-4802-ac41-171a3bdbe9cf/status"}}
+{"level":"info","message":"Submission updated successfully","timestamp":"10-15-2026 08:50:11","data":{"jobId":"6","submissionId":"8860eaae-5c89-4802-ac41-171a3bdbe9cf","data":{"message":"Submission status updated successfully","data":{"id":"8860eaae-5c89-4802-ac41-171a3bdbe9cf","problemId":"1dd5e23d-2b0a-48f4-ad72-67f8260e8f11","code":"a, b = map(int, input().split())\nprint(a + b)","language":"python","status":"accepted","createdAt":"2026-10-15T03:20:10.988Z","updatedAt":"2026-10-15T03:20:11.358Z"},"success":true}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"10-15-2026 08:50:11","data":{"jobId":"6"}}
+{"level":"info","message":"Processing evaluation job 7","timestamp":"10-15-2026 08:51:34","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:51:34","data":{"containerId":"437c2d21e7b854d955499d83178ff245767544caa1f4c5d82f4d76c4000b3cc6"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:51:34","data":{"containerId":"f4fa6754d8ceb41bdbd96b2a66fa8f63f22971fab9bf5e71c97a5e571298b0e4"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:51:34","data":{"containerId":"85b1236571316005d54e6c47da0412f96917c9f97ce78575c7c2de96a16b4b81"}}
+{"level":"info","message":"Docker container created successfully","timestamp":"10-15-2026 08:51:34","data":{"containerId":"39305daa2fbf26d8d380d87cd50c35f4fedc8fdd7685c6f749aaf1731bee6ed2"}}
+{"level":"info","message":"Submission e47c15d4-80e5-4749-b91a-3c1cf9d60e12 evaluated as accepted","timestamp":"10-15-2026 08:51:35","data":{"jobId":"7","submissionId":"e47c15d4-80e5-4749-b91a-3c1cf9d60e12","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status","timestamp":"10-15-2026 08:51:35","data":{"url":"http://localhost:3002/submissions/e47c15d4-80e5-4749-b91a-3c1cf9d60e12/status"}}
+{"level":"info","message":"Submission updated successfully","timestamp":"10-15-2026 08:51:35","data":{"jobId":"7","submissionId":"e47c15d4-80e5-4749-b91a-3c1cf9d60e12","data":{"message":"Submission status updated successfully","data":{"id":"e47c15d4-80e5-4749-b91a-3c1cf9d60e12","problemId":"3b959ef8-f68e-4281-bcbb-000477121148","code":"a, b = map(int, input().split())\nprint(a * b)","language":"python","status":"accepted","createdAt":"2026-10-15T03:21:34.522Z","updatedAt":"2026-10-15T03:21:35.101Z"},"success":true}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"10-15-2026 08:51:35","data":{"jobId":"7"}}

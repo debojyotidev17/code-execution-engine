@@ -1,0 +1,30 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "Node.js backend built with TypeScript and Express",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "dist/index.js",
+    "scripts": {
+        "start": "docker pull python:3.8-slim  && docker pull gcc:14 && npx tsc && node --watch dist/server.js"
+    },
+    "dependencies": {
+        "bullmq": "^6.3.6",
+        "dockerode": "^5.0.1",
+        "dotenv": "^17.4.2",
+        "express": "^5.2.1",
+        "ioredis": "^6.0.0",
+        "uuid": "^14.0.2",
+        "winston": "^3.19.0",
+        "winston-daily-rotate-file": "^5.0.0",
+        "zod": "^4.4.3"
+    },
+    "devDependencies": {
+        "@types/dockerode": "^4.0.1",
+        "@types/express": "^5.0.6",
+        "@types/node": "^24.0.0",
+        "tsx": "^4.20.0",
+        "typescript": "^7.0.2"
+    }
+}
