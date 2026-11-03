@@ -1,0 +1,18 @@
+{"level":"info","message":"Submission Service is running on 3001","correlationID":"unknown-correlation-id","timestamp":"11-03-2026 19:34:55","data":{}}
+{"level":"info","message":"Redis connected","correlationID":"unknown-correlation-id","timestamp":"11-03-2026 19:34:55","data":{}}
+{"level":"info","message":"Validating request body","correlationID":"a900c6b9-e56a-486f-b24d-57e0f9111ad3","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Request body is valid","correlationID":"a900c6b9-e56a-486f-b24d-57e0f9111ad3","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Fetching problem details for problemId: c4bb5208-0188-494c-8385-3fcd2ac20e94","correlationID":"a900c6b9-e56a-486f-b24d-57e0f9111ad3","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Submission job added successfully: 1","correlationID":"a900c6b9-e56a-486f-b24d-57e0f9111ad3","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Validating route params","correlationID":"732b0732-6245-422c-8d25-232b50d4f02f","timestamp":"11-03-2026 19:44:30","data":{}}
+{"level":"info","message":"Route params are valid","correlationID":"732b0732-6245-422c-8d25-232b50d4f02f","timestamp":"11-03-2026 19:44:30","data":{}}
+{"level":"info","message":"Validating request body","correlationID":"732b0732-6245-422c-8d25-232b50d4f02f","timestamp":"11-03-2026 19:44:30","data":{}}
+{"level":"info","message":"Request body is valid","correlationID":"732b0732-6245-422c-8d25-232b50d4f02f","timestamp":"11-03-2026 19:44:30","data":{}}
+{"level":"info","message":"Validating request body","correlationID":"0ca220e7-1aff-4687-a688-ca8a6fed5fa3","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Request body is valid","correlationID":"0ca220e7-1aff-4687-a688-ca8a6fed5fa3","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Fetching problem details for problemId: c4bb5208-0188-494c-8385-3fcd2ac20e94","correlationID":"0ca220e7-1aff-4687-a688-ca8a6fed5fa3","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Submission job added successfully: 2","correlationID":"0ca220e7-1aff-4687-a688-ca8a6fed5fa3","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Validating route params","correlationID":"60452385-e257-4fe0-aea4-c45d57a1c7f0","timestamp":"11-03-2026 19:45:16","data":{}}
+{"level":"info","message":"Route params are valid","correlationID":"60452385-e257-4fe0-aea4-c45d57a1c7f0","timestamp":"11-03-2026 19:45:16","data":{}}
+{"level":"info","message":"Validating request body","correlationID":"60452385-e257-4fe0-aea4-c45d57a1c7f0","timestamp":"11-03-2026 19:45:16","data":{}}
+{"level":"info","message":"Request body is valid","correlationID":"60452385-e257-4fe0-aea4-c45d57a1c7f0","timestamp":"11-03-2026 19:45:16","data":{}}

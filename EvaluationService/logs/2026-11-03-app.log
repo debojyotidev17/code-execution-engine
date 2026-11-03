@@ -1,0 +1,18 @@
+{"level":"info","message":"Server is running on 3002","timestamp":"11-03-2026 19:36:22","data":{}}
+{"level":"info","message":"evalutaion workers started","timestamp":"11-03-2026 19:36:22","data":{}}
+{"level":"info","message":"Redis connected","timestamp":"11-03-2026 19:36:22","data":{}}
+{"level":"info","message":"Server is running on 3002","timestamp":"11-03-2026 19:44:29","data":{}}
+{"level":"info","message":"evalutaion workers started","timestamp":"11-03-2026 19:44:29","data":{}}
+{"level":"info","message":"Redis connected","timestamp":"11-03-2026 19:44:29","data":{}}
+{"level":"info","message":"Processing evaluation job 1","timestamp":"11-03-2026 19:44:29","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"11-03-2026 19:44:30","data":{"containerId":"b317bacd68d5581267b2e4da90070871311a65b86fbc7bfc6d092dfcd96efd51"}}
+{"level":"info","message":"Submission a7e0d2e1-25d6-4344-b153-5a1d4b6859ff evaluated as accepted","timestamp":"11-03-2026 19:44:30","data":{"jobId":"1","submissionId":"a7e0d2e1-25d6-4344-b153-5a1d4b6859ff","submissionStatus":"accepted"}}
+{"level":"info","message":"Updating submission status for submissionId: a7e0d2e1-25d6-4344-b153-5a1d4b6859ff","timestamp":"11-03-2026 19:44:30","data":{}}
+{"level":"info","message":"Submission status updated successfully for submissionId: a7e0d2e1-25d6-4344-b153-5a1d4b6859ff","timestamp":"11-03-2026 19:44:30","data":{"jobId":"1","data":{"id":"a7e0d2e1-25d6-4344-b153-5a1d4b6859ff","problemId":"c4bb5208-0188-494c-8385-3fcd2ac20e94","code":"print(input())","language":"python","status":"accepted","createdAt":"2026-11-03T14:10:51.339Z","updatedAt":"2026-11-03T14:14:30.643Z"}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"11-03-2026 19:44:30","data":{"jobId":"1"}}
+{"level":"info","message":"Processing evaluation job 2","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Docker container created successfully","timestamp":"11-03-2026 19:45:15","data":{"containerId":"77a184b0a8776b9e1d30fa7af085d8b1213ec89420fd3854e5ec863f793a758e"}}
+{"level":"info","message":"Submission d491869a-9dc2-413d-8e9a-55decffe1285 evaluated as wrong_answer","timestamp":"11-03-2026 19:45:16","data":{"jobId":"2","submissionId":"d491869a-9dc2-413d-8e9a-55decffe1285","submissionStatus":"wrong_answer"}}
+{"level":"info","message":"Updating submission status for submissionId: d491869a-9dc2-413d-8e9a-55decffe1285","timestamp":"11-03-2026 19:45:16","data":{}}
+{"level":"info","message":"Submission status updated successfully for submissionId: d491869a-9dc2-413d-8e9a-55decffe1285","timestamp":"11-03-2026 19:45:16","data":{"jobId":"2","data":{"id":"d491869a-9dc2-413d-8e9a-55decffe1285","problemId":"c4bb5208-0188-494c-8385-3fcd2ac20e94","code":"print(0)","language":"python","status":"wrong_answer","createdAt":"2026-11-03T14:15:15.714Z","updatedAt":"2026-11-03T14:15:16.135Z"}}}
+{"level":"info","message":"Evaluation job completed","timestamp":"11-03-2026 19:45:16","data":{"jobId":"2"}}

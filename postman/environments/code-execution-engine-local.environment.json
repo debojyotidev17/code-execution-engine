@@ -1,0 +1,39 @@
+{
+    "id": "1d7633f2-e56d-46b7-93fa-462806c5b6f7",
+    "name": "Code Execution Engine Local",
+    "values": [
+        {
+            "key": "problemServiceUrl",
+            "value": "http://localhost:3000",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "submissionServiceUrl",
+            "value": "http://localhost:3001",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "problemId",
+            "value": "",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "submissionId",
+            "value": "",
+            "type": "default",
+            "enabled": true
+        },
+        {
+            "key": "problemTitle",
+            "value": "",
+            "type": "default",
+            "enabled": true
+        }
+    ],
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2026-11-03T00:00:00.000Z",
+    "_postman_exported_using": "Postman/12.34.4"
+}

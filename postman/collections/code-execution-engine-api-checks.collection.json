@@ -1,0 +1,451 @@
+{
+    "info": {
+        "_postman_id": "9ab042c1-bbb1-4e52-9fae-4f9553471517",
+        "name": "Code Execution Engine - API Checks",
+        "description": "Route checks for ProblemService and SubmissionService. EvaluationService is a BullMQ worker and does not expose HTTP routes. Requests are not run automatically. Create/update/delete requests modify local databases; submission creation queues asynchronous evaluation and requires Redis, EvaluationService, and Docker.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "ProblemService",
+            "item": [
+                {
+                    "name": "List problems",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Returns the problem list and total count.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Search problems",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Searches problem titles and descriptions. Create a problem first so the generated title can be searched.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems/search?query={{problemTitle}}",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems", "search"],
+                            "query": [
+                                {
+                                    "key": "query",
+                                    "value": "{{problemTitle}}"
+                                }
+                            ]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Filter problems by difficulty",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Returns problems with difficulty easy, medium, or hard. This example uses easy.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems/difficulty/easy",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems", "difficulty", "easy"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Create problem",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "description": "Creates a problem and its test cases. The pre-request script generates a unique title; the test script saves the returned ID to problemId. This changes the ProblemService database.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"title\": \"{{problemTitle}}\",\n  \"description\": \"Read one integer and print it unchanged.\",\n  \"difficulty\": \"easy\",\n  \"editorial\": \"Read the input value and print it.\",\n  \"testcases\": [\n    { \"input\": \"3\", \"output\": \"3\" }\n  ]\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 201', function () { pm.response.to.have.status(201); });"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "prerequest",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.environment.set('problemTitle', 'Postman Echo ' + Date.now());"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('Problem was created', function () { pm.response.to.have.status(201); });",
+                                    "const data = pm.response.json().data;",
+                                    "pm.environment.set('problemId', data.id);"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get problem by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Fetches one problem and its test cases. Run Create problem first or set problemId manually.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems/{{problemId}}",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems", "{{problemId}}"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Update problem",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "description": "Partially updates a problem. This sample updates only its editorial.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems/{{problemId}}",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems", "{{problemId}}"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"editorial\": \"Read the integer from standard input and print the same value.\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "SubmissionService",
+            "item": [
+                {
+                    "name": "Create submission",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "description": "Creates a submission and queues it for asynchronous evaluation. Requires a valid problemId, EvaluationService, Redis, and Docker. This sample Python program passes the echo problem created above. The test script saves the returned ID to submissionId.",
+                        "url": {
+                            "raw": "{{submissionServiceUrl}}/submissions",
+                            "host": ["{{submissionServiceUrl}}"],
+                            "path": ["submissions"]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"problemId\": \"{{problemId}}\",\n  \"code\": \"print(input())\",\n  \"language\": \"python\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 201', function () { pm.response.to.have.status(201); });"
+                                ]
+                            }
+                        },
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('Submission was created', function () { pm.response.to.have.status(201); });",
+                                    "const data = pm.response.json().data;",
+                                    "pm.environment.set('submissionId', data.id);"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "List submissions for problem",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Lists submissions associated with problemId.",
+                        "url": {
+                            "raw": "{{submissionServiceUrl}}/submissions/problem/{{problemId}}",
+                            "host": ["{{submissionServiceUrl}}"],
+                            "path": ["submissions", "problem", "{{problemId}}"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Get submission by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "description": "Fetches one submission. Its status can remain pending until EvaluationService finishes processing the queued job.",
+                        "url": {
+                            "raw": "{{submissionServiceUrl}}/submissions/{{submissionId}}",
+                            "host": ["{{submissionServiceUrl}}"],
+                            "path": ["submissions", "{{submissionId}}"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Update submission status",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "description": "Manually updates a submission status. Allowed values: accepted, wrong_answer, time_limit_exceeded, runtime_error. EvaluationService may also update the status asynchronously.",
+                        "url": {
+                            "raw": "{{submissionServiceUrl}}/submissions/{{submissionId}}/status",
+                            "host": ["{{submissionServiceUrl}}"],
+                            "path": [
+                                "submissions",
+                                "{{submissionId}}",
+                                "status"
+                            ]
+                        },
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"status\": \"accepted\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Cleanup (destructive)",
+            "description": "Run these only after you finish testing the created records.",
+            "item": [
+                {
+                    "name": "Delete submission",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "description": "Deletes the selected submission. Use after evaluation has finished; this changes the SubmissionService database.",
+                        "url": {
+                            "raw": "{{submissionServiceUrl}}/submissions/{{submissionId}}",
+                            "host": ["{{submissionServiceUrl}}"],
+                            "path": ["submissions", "{{submissionId}}"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete problem",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "description": "Deletes the selected problem and its test cases. Run after testing submissions; this changes the ProblemService database.",
+                        "url": {
+                            "raw": "{{problemServiceUrl}}/problems/{{problemId}}",
+                            "host": ["{{problemServiceUrl}}"],
+                            "path": ["problems", "{{problemId}}"]
+                        }
+                    },
+                    "response": [],
+                    "event": [
+                        {
+                            "listen": "test",
+                            "script": {
+                                "type": "text/javascript",
+                                "exec": [
+                                    "pm.test('HTTP 200', function () { pm.response.to.have.status(200); });"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "event": [],
+    "variable": [
+        {
+            "key": "problemServiceUrl",
+            "value": "http://localhost:3000",
+            "type": "string"
+        },
+        {
+            "key": "submissionServiceUrl",
+            "value": "http://localhost:3001",
+            "type": "string"
+        },
+        {
+            "key": "problemId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "submissionId",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "problemTitle",
+            "value": "",
+            "type": "string"
+        }
+    ]
+}

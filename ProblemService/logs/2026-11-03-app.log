@@ -1,0 +1,7 @@
+{"level":"info","message":"Problem Service is running on 3000","correlationID":"unknown-correlation-id","timestamp":"11-03-2026 19:34:41","data":{}}
+{"level":"info","message":"Validating request body","correlationID":"d3451240-ffce-49b4-99a6-94f8e877ba38","timestamp":"11-03-2026 19:39:28","data":{}}
+{"level":"info","message":"Request body is valid","correlationID":"d3451240-ffce-49b4-99a6-94f8e877ba38","timestamp":"11-03-2026 19:39:28","data":{}}
+{"level":"info","message":"Validating route params","correlationID":"5dd3112e-cbe3-4725-ba6d-7154a0849268","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Route params are valid","correlationID":"5dd3112e-cbe3-4725-ba6d-7154a0849268","timestamp":"11-03-2026 19:40:51","data":{}}
+{"level":"info","message":"Validating route params","correlationID":"6639ccd1-83ed-48aa-a32e-50c09411459d","timestamp":"11-03-2026 19:45:15","data":{}}
+{"level":"info","message":"Route params are valid","correlationID":"6639ccd1-83ed-48aa-a32e-50c09411459d","timestamp":"11-03-2026 19:45:15","data":{}}
